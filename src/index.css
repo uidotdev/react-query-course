@@ -1,0 +1,424 @@
+/* Ignore this file. You can put your CSS in the styles.css file */
+
+@import url("https://ui.dev/font");
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1100px;
+  padding: 50px;
+}
+
+a {
+  color: var(--yellow);
+  font-weight: 600;
+}
+
+.red {
+  background-color: rgba(255, 0, 0, 0.2);
+  color: red;
+  border-color: red;
+}
+.red:hover,
+.red.selected {
+  background-color: rgba(255, 0, 0, 0.5);
+}
+.blue {
+  background-color: rgba(0, 0, 255, 0.1);
+  color: rgb(0, 120, 255);
+  border-color: blue;
+}
+.blue:hover,
+.blue.selected {
+  background-color: rgba(0, 0, 255, 0.5);
+}
+.cyan {
+  background-color: rgba(0, 255, 255, 0.2);
+  color: cyan;
+  border-color: cyan;
+}
+.cyan:hover,
+.cyan.selected {
+  background-color: rgba(0, 255, 255, 0.5);
+}
+.orange {
+  background-color: rgba(255, 165, 0, 0.2);
+  color: orange;
+  border-color: orange;
+}
+.orange:hover,
+.orange.selected {
+  background-color: rgba(255, 165, 0, 0.5);
+}
+.lime {
+  background-color: rgba(0, 255, 0, 0.2);
+  color: lime;
+  border-color: lime;
+}
+.lime:hover,
+.lime.selected {
+  background-color: rgba(0, 255, 0, 0.5);
+}
+.white {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border-color: white;
+}
+.white:hover,
+.white.selected {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.rebeccapurple {
+  background-color: rgba(102, 51, 153, 0.2);
+  color: rebeccapurple;
+  border-color: rebeccapurple;
+}
+.rebeccapurple:hover,
+.rebeccapurple.selected {
+  background-color: rgba(102, 51, 153, 0.5);
+}
+.yellow {
+  background-color: rgba(255, 255, 0, 0.2);
+  color: yellow;
+  border-color: yellow;
+}
+.yellow:hover,
+.yellow.selected {
+  background-color: rgba(255, 255, 0, 0.5);
+}
+
+h1 {
+  text-align: center;
+  font-weight: black;
+  font-size: 3rem;
+}
+button,
+.button {
+  width: 100%;
+  cursor: pointer;
+  background: var(--yellow);
+  color: var(--black);
+  border-radius: 0.25rem;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  transition: background 0.1s ease-in-out;
+  text-align: center;
+  text-decoration: none;
+}
+button:hover,
+.button:hover {
+  background: var(--gold);
+}
+hr {
+  width: 80%;
+  border-color: #aaa;
+}
+main {
+  display: flex;
+  gap: 4rem;
+}
+section {
+  flex: 2;
+}
+aside {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.issues-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.issues-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  border: solid 1px rgba(255, 255, 255, 0.25);
+  border-radius: 0.25rem;
+}
+.issues-list li div svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+.issues-list li:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.issues-list li a {
+  text-decoration: none;
+  margin-right: 1rem;
+}
+.issues-list li small {
+  font-size: 0.75rem;
+  color: #aaa;
+}
+.issues-list .assigned-to {
+  width: 1.5rem;
+  border-radius: 100%;
+}
+form label {
+  margin-bottom: 0.25rem;
+  display: block;
+  font-weight: bold;
+}
+form input {
+  width: 100%;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  border: solid 1px rgba(255, 255, 255, 0.25);
+  padding: 0.5rem 1rem;
+  transition: border 0.1s ease-in-out;
+  background-color: black;
+  color: white;
+}
+.comment-count {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 0.25rem;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+.issue-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.issue-content > span > span,
+.labels li button,
+.label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 0.1rem 0.3rem;
+  border: solid 1px;
+  text-align: center;
+  white-space: nowrap;
+}
+.labels ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.status-select {
+  background: black;
+  color: var(--yellow);
+  border: solid 1px var(--yellow);
+  font-size: 1rem;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.add-issue form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 65ch;
+}
+.add-issue form input,
+.add-issue form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  color: white;
+  border: solid 1px #aaa;
+  background-color: var(--black);
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-family: proxima-nova, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
+}
+.add-issue form textarea {
+  height: 10rem;
+}
+.add-issue form button {
+  width: max-content;
+  align-self: flex-end;
+  font-size: 1rem;
+}
+
+.issue-details header {
+  border-bottom: solid 1px #aaa;
+  padding-bottom: 1rem;
+}
+.issue-details h2 span {
+  color: #aaa;
+}
+.issue-details header div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+.issue-details .created-by {
+  font-weight: bold;
+}
+.issue-details .open,
+.issue-details .closed {
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: max-content;
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  font-size: 1rem;
+}
+.issue-details .open {
+  background: green;
+}
+.issue-details .closed {
+  background: red;
+}
+.issue-options {
+  border-bottom: solid 1px #aaa;
+  padding: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.issue-options:last-child {
+  border-bottom: none;
+}
+.issue-options span {
+  font-size: 0.9rem;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.issue-details aside img {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 999px;
+}
+.issue-options > div > div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.issue-details aside > div {
+  position: relative;
+}
+.issue-details aside svg {
+  cursor: pointer;
+  transition: transform 0.25s ease-in-out;
+}
+.issue-details aside svg:hover {
+  transform: rotate(30deg);
+}
+.issue-details aside .status-select {
+  font-size: 0.8rem;
+}
+.label-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+}
+.picker-menu {
+  z-index: 10;
+  position: absolute;
+  top: 2.5rem;
+  right: 1.5rem;
+  width: 12rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  border: solid 1px rgba(255, 255, 255, 0.2);
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+.issue-options .picker-menu > div {
+  display: flex;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+}
+.issue-options .picker-menu.labels > div {
+  align-items: baseline;
+}
+
+.issue-options .picker-menu > div.selected {
+  background-color: #444;
+}
+
+.issue-options .picker-menu > div:hover {
+  background-color: #333;
+}
+
+.comment {
+  margin: 1rem 0;
+  display: flex;
+  gap: 1rem;
+}
+.comment > img {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+}
+.comment > div {
+  flex: 1;
+  border: solid 1px #aaa;
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+.comment-header {
+  padding: 0.5rem;
+  border-bottom: solid 1px #aaa;
+  background-color: #111;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+.comment-header > span:first-child {
+  font-weight: bold;
+  color: white;
+}
+.comment-body {
+  padding: 0.75rem;
+}
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.pagination button {
+  width: max-content;
+}
+.loader {
+  animation: spin 1s steps(8) infinite;
+  height: 1rem;
+}
+.fetching-indicator {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 1rem;
+  z-index: 10;
+  pointer-events: none;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
