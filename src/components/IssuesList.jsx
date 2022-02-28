@@ -4,17 +4,11 @@ import { IssueItem } from "./IssueItem";
 import fetchWithError from "../helpers/fetchWithError";
 
 export default function IssuesList({ labels, status }) {
-  const issuesQuery = useQuery(
-    ["issues", { labels, status }],
-    () => {
-      const statusString = status ? `&status=${status}` : "";
-      const labelsString = labels.map((label) => `labels[]=${label}`).join("&");
-      return fetchWithError(`/api/issues?${labelsString}${statusString}`);
-    },
-    {
-      staleTime: 1000 * 60,
-    }
-  );
+  const issuesQuery = useQuery(["issues", { labels, status }], () => {
+    const statusString = status ? `&status=${status}` : "";
+    const labelsString = labels.map((label) => `labels[]=${label}`).join("&");
+    return fetchWithError(`/api/issues?${labelsString}${statusString}`);
+  });
   const [searchValue, setSearchValue] = useState("");
 
   const searchQuery = useQuery(

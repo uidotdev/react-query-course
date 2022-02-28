@@ -7,7 +7,13 @@ import { worker } from "@uidotdev/react-query-api";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60,
+    },
+  },
+});
 
 new Promise((res) => setTimeout(res, 100))
   .then(() =>
