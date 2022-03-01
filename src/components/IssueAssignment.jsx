@@ -14,7 +14,7 @@ export default function IssueAssignment({ assignee, issueNumber }) {
 
   const setAssignment = useMutation(
     (assignee) => {
-      fetch(`/api/issues/${issueNumber}`, {
+      return fetch(`/api/issues/${issueNumber}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",
