@@ -4,15 +4,17 @@ import { IssueItem } from "./IssueItem";
 import fetchWithError from "../helpers/fetchWithError";
 import Loader from "./Loader";
 
-export default function IssuesList({ labels, status }) {
+export default function IssuesList({ labels, status, pageNum, setPageNum }) {
   const queryClient = useQueryClient();
   const issuesQuery = useQuery(
-    ["issues", { labels, status }],
+    ["issues", { labels, status, pageNum }],
     async ({ signal }) => {
       const statusString = status ? `&status=${status}` : "";
       const labelsString = labels.map((label) => `labels[]=${label}`).join("&");
+      const paginationString = pageNum ? `&page=${pageNum}` : "";
+
       const results = await fetchWithError(
-        `/api/issues?${labelsString}${statusString}`,
+        `/api/issues?${labelsString}${statusString}${paginationString}`,
         {
           signal,
         }
@@ -23,6 +25,9 @@ export default function IssuesList({ labels, status }) {
       });
 
       return results;
+    },
+    {
+      keepPreviousData: true,
     }
   );
   const [searchValue, setSearchValue] = useState("");
@@ -68,21 +73,53 @@ export default function IssuesList({ labels, status }) {
         <p>{issuesQuery.error.message}</p>
       ) : searchQuery.fetchStatus === "idle" &&
         searchQuery.isLoading === true ? (
-        <ul className="issues-list">
-          {issuesQuery.data.map((issue) => (
-            <IssueItem
-              key={issue.id}
-              title={issue.title}
-              number={issue.number}
-              assignee={issue.assignee}
-              commentCount={issue.comments.length}
-              createdBy={issue.createdBy}
-              createdDate={issue.createdDate}
-              labels={issue.labels}
-              status={issue.status}
-            />
-          ))}
-        </ul>
+        <>
+          <ul className="issues-list">
+            {issuesQuery.data.map((issue) => (
+              <IssueItem
+                key={issue.id}
+                title={issue.title}
+                number={issue.number}
+                assignee={issue.assignee}
+                commentCount={issue.comments.length}
+                createdBy={issue.createdBy}
+                createdDate={issue.createdDate}
+                labels={issue.labels}
+                status={issue.status}
+              />
+            ))}
+          </ul>
+          <div className="pagination">
+            <button
+              onClick={() => {
+                if (pageNum - 1 > 0) {
+                  setPageNum(pageNum - 1);
+                }
+              }}
+              disabled={pageNum === 1}
+            >
+              Previous
+            </button>
+            <p>
+              Page {pageNum} {issuesQuery.isFetching ? "..." : ""}
+            </p>
+            <button
+              disabled={
+                issuesQuery.data?.length === 0 || issuesQuery.isPreviousData
+              }
+              onClick={() => {
+                if (
+                  issuesQuery.data?.length !== 0 &&
+                  !issuesQuery.isPreviousData
+                ) {
+                  setPageNum(pageNum + 1);
+                }
+              }}
+            >
+              Next
+            </button>
+          </div>
+        </>
       ) : (
         <>
           <h2>Search Results</h2>
