@@ -13,7 +13,7 @@ export default function IssuesList() {
       {issuesQuery.isLoading ? (
         <p>Loading...</p>
       ) : (
-        <ul>
+        <ul className="issues-list">
           {issuesQuery.data?.map((issue) => (
             <IssueItem key={issue?.id} issue={issue}/>
           ))}
