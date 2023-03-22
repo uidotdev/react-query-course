@@ -1,5 +1,6 @@
 import React from "react";
 import { GoIssueOpened, GoIssueClosed } from "react-icons/go";
+import { FaRegComment } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { relativeDate } from "../helpers/relativeDate";
 
@@ -36,6 +37,15 @@ function IssueItem({ issue }) {
           # {number} opened {relativeDate(createdDate)}
         </small>
       </div>
+      {assignee ? <div>{assignee}</div> : null}
+      <span className="comment-count">
+        {comments.length > 0 ? (
+          <React.Fragment>
+            <FaRegComment />
+            {comments.length}
+          </React.Fragment>
+        ) : null}
+      </span>
     </li>
   );
 }
