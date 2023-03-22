@@ -1,8 +1,13 @@
 import React from "react";
+import { GoIssueOpened, GoIssueClosed } from "react-icons/go";
 
 function IssueItem({ issue }) {
-  const { title, labels, comments, number, createdDate, createdBy, assignee } = issue;
-  return <div>IssueItem</div>;
+  const { title, labels, comments, number, createdDate, createdBy, assignee, status } = issue;
+  return <li>
+    <div>
+      {status === "done" || status === "cancelled" ? <GoIssueOpened style={{color: "red"}}/> : <GoIssueClosed style={{color: "green"}}/>}
+    </div>
+  </li>;
 }
 
 export default IssueItem;
