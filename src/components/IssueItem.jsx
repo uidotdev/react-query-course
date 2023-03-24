@@ -34,7 +34,7 @@ function IssueItem({ issue }) {
           ))}
         </span>
         <small>
-          # {number} opened {relativeDate(createdDate)}
+          # {number} opened {relativeDate(createdDate)} by {createdBy}
         </small>
       </div>
       {assignee ? <div>{assignee}</div> : null}
