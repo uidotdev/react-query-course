@@ -3,6 +3,7 @@ import { GoIssueOpened, GoIssueClosed } from "react-icons/go";
 import { FaRegComment } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { relativeDate } from "../helpers/relativeDate";
+import { useUserData } from "../helpers/useUserData";
 
 function IssueItem({ issue }) {
   const {
@@ -15,6 +16,10 @@ function IssueItem({ issue }) {
     assignee,
     status,
   } = issue;
+
+  const userImageData = useUserData(assignee);
+  const userNameData = useUserData(createdBy);
+
   return (
     <li>
       <div>
@@ -34,10 +39,10 @@ function IssueItem({ issue }) {
           ))}
         </span>
         <small>
-          # {number} opened {relativeDate(createdDate)} by {createdBy}
+          # {number} opened {relativeDate(createdDate)} {userNameData.isSuccess ? `by ${userNameData.data.name}` : null}
         </small>
       </div>
-      {assignee ? <div>{assignee}</div> : null}
+      {assignee ? <img src={userImageData.isSuccess ? userImageData.data.profilePictureUrl : ""} className="assigned-to" alt="profile"/> : null}
       <span className="comment-count">
         {comments.length > 0 ? (
           <React.Fragment>
