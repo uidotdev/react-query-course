@@ -18,7 +18,7 @@ new Promise((res) => setTimeout(res, 100))
   .then(() => {
     ReactDOM.render(
       <React.StrictMode>
-        <QueryClientProvider client={client}>
+        <QueryClientProvider>
           <BrowserRouter>
             <div className="container">
               <App />
